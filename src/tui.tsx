@@ -90,11 +90,10 @@ function TodoPanel(props: { panel: PanelInput }) {
       >
         <For each={visible()}>
           {(item, index) => (
-            <text
-              fg={statusColor(item.status)}
-              backgroundColor={index() === selected() ? context.theme.bg?.selected ?? "#333333" : undefined}
-            >
-              {` [${statusMark(item.status)}] ${item.id}. ${item.content}${item.status === "completed" ? " (done)" : ""}`}
+            <text fg={statusColor(item.status)}>
+              {(index() === selected() ? "❯ " : "  ") +
+                `[${statusMark(item.status)}] ${item.id}. ${item.content}` +
+                (item.status === "completed" ? " (done)" : "")}
             </text>
           )}
         </For>
